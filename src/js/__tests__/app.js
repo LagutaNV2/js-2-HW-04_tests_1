@@ -52,3 +52,30 @@ describe('Тестирование сортировки героев по здо
         expect(sortHeroesByHealth(heroes)).toEqual(expected);
     });
 });
+
+
+// Задача 3
+
+import fetchData from '../http';
+import { getLevel } from '../app';
+
+// Мокаем fetchData с помощью jest.mock
+jest.mock('../http');
+
+describe('Тестирование функции getLevel', () => {
+    test('должна вернуть уровень пользователя при успешном ответе', () => {
+        // Мокируем fetchData для успешного ответа
+        fetchData.mockReturnValue({ status: 'ok', level: 5 });
+
+        const result = getLevel(1);
+        expect(result).toBe('Ваш текущий уровень: 5');
+    });
+
+    test('должна вернуть сообщение об ошибке при неудачном ответе', () => {
+        // Мокируем fetchData для неудачного ответа
+        fetchData.mockReturnValue({ status: 'error' });
+
+        const result = getLevel(1);
+        expect(result).toBe('Информация об уровне временно недоступна');
+    });
+});
