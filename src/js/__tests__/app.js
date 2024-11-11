@@ -6,9 +6,8 @@ test.each([
     [{ name: 'X', health: 90 }, 'healthy'],
     [{ name: 'Y', health: 30 }, 'wounded'],
     [{ name: 'Z', health: 10 }, 'critical'],
-])
-('Testing function getHealthStatus with %o ожидается статус %s', (character, expected) => {
-    expected(getHealthStatus(character)).toBe(expected);
+])('Testing function getHealthStatus with %o ожидается статус %s', (character, expected) => {
+    expect(getHealthStatus(character)).toBe(expected);
 });
 
 
@@ -50,6 +49,6 @@ describe('Тестирование сортировки героев по здо
             ]
         ],
     ])('для героев %o ожидается сортировка %o', (heroes, expected) => {
-        expected(sortHeroesByHealth(heroes)).toEqual(expected);
+        expect(sortHeroesByHealth(heroes)).toEqual(expected);
     });
 });
