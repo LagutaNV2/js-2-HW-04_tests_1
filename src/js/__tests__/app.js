@@ -59,16 +59,13 @@ import fetchData from '../http';
 import { getLevel } from '../app';
 import { beforeEach } from 'node:test';
 
-// Мокаем fetchData с помощью jest.mock
 jest.mock('../http');
 
 beforeEach(()=> {
     jest.resetAllMocks();
 });
 
-// describe('Тестирование функции getLevel', () => {
-test('должна вернуть уровень пользователя при успешном ответе', () => {
-    // Мокируем fetchData для успешного ответа
+test('должна вернуть level = 5  при успешном ответе', () => {
     fetchData.mockReturnValue({ status: 'ok', level: 5 });
 
     const result = getLevel(1);
@@ -76,7 +73,6 @@ test('должна вернуть уровень пользователя при
 });
 
 test('должна вернуть сообщение об ошибке при неудачном ответе', () => {
-    // Мокируем fetchData для неудачного ответа
     fetchData.mockReturnValue({ status: 'error' });
 
     const result = getLevel(1);
