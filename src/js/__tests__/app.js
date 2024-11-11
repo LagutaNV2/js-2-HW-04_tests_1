@@ -6,9 +6,11 @@ test.each([
     [{ name: 'X', health: 90 }, 'healthy'],
     [{ name: 'Y', health: 30 }, 'wounded'],
     [{ name: 'Z', health: 10 }, 'critical'],
-])('Testing function getHealthStatus with %o ожидается статус %s', (character, expected) => {
+])
+('Testing function getHealthStatus with %o ожидается статус %s', (character, expected) => {
     expected(getHealthStatus(character)).toBe(expected);
 });
+
 
 // задача 2 Matchers
 import { sortHeroesByHealth } from '../app';
